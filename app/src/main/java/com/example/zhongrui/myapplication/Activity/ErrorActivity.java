@@ -8,12 +8,12 @@ import android.widget.Button;
 
 import com.example.zhongrui.myapplication.R;
 
-public class AirOnActivity extends AppCompatActivity {
+public class ErrorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_air_on);
+        setContentView(R.layout.activity_error);
 
         final Button btn = findViewById(R.id.back);
         btn.setOnClickListener(new View.OnClickListener() {

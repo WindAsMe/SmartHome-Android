@@ -31,7 +31,8 @@
         <activity android:name=".Activity.AirOnActivity" />
         <activity android:name=".Activity.AirOffActivity" />
         <activity android:name=".Activity.LightOnActivity" />
-        <activity android:name=".Activity.LightOffActivity"></activity>
+        <activity android:name=".Activity.LightOffActivity" />
+        <activity android:name=".Activity.ErrorActivity"></activity>
     </application>
 
 </manifest>
