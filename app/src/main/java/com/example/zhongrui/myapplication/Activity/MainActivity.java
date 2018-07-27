@@ -1,15 +1,15 @@
-package com.example.zhongrui.myapplication;
+package com.example.zhongrui.myapplication.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.zhongrui.myapplication.R;
 import com.example.zhongrui.myapplication.util.HttpUtil;
 
 public class MainActivity extends AppCompatActivity {
-
-    private HttpUtil httpUtil = new HttpUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,33 +23,29 @@ public class MainActivity extends AppCompatActivity {
         btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.btn1);
-                httpUtil.HttpGet("temp");
+                Intent intent = new Intent(MainActivity.this, TempActivity.class);
+                startActivity(intent);
             }
         });
-
         btnTwo.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.btn2);
-                httpUtil.HttpGet("humid");
+                Intent intent = new Intent(MainActivity.this, HumidActivity.class);
+                startActivity(intent);
             }
         });
-
         btnThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.btn3);
-                httpUtil.HttpGet("press");
+                Intent intent = new Intent(MainActivity.this, PressActivity.class);
+                startActivity(intent);
             }
         });
-
         btnFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.btn4);
-                httpUtil.HttpGet("all");
+                Intent intent = new Intent(MainActivity.this, AllActivity.class);
+                startActivity(intent);
             }
         });
     }
