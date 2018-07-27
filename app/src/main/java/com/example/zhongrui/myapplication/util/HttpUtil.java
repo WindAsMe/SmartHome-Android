@@ -1,41 +1,27 @@
 package com.example.zhongrui.myapplication.util;
 
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import java.io.IOException;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 
 public class HttpUtil {
-
     // Waiting Adjusting...
     private final static String url = "http://127.0.0.1:8090/";
     private static OkHttpClient client = new OkHttpClient();
-
-    public static Response HttpGet(final String address) throws Exception {
-        Log.v("invoke HttpGet {}", url + address);
-        Request request = new Request.Builder()
-                .url(url + address)
-                .build();
-        return client.newCall(request).execute();
-    }
 
     // flag represent the movement:
     // Air on: 1
     // Air off: 2
     // Light on: 3
     // Light off: 4
-    public static void HomeControl(final View v, final int flag) throws Exception {
+    public static void HomeControl(final View v, final int flag) {
         Log.v("invoke HomeControl {}", url + "home?flag=" + flag);
         new Thread (new Runnable() {
             @Override
