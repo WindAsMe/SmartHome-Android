@@ -34,7 +34,7 @@ public class TempActivity extends AppCompatActivity {
             List<TempModel> models = new ArrayList<>();
             for (int i = 0; i < 20; i++) {
                 MetaModel metaModel = new MetaModel(0, null);
-                TempDataModel dataModel = new TempDataModel("100", "2018-07-27 14:29:56");
+                TempDataModel dataModel = new TempDataModel("temp: 100", "2018-07-27 14:29:56");
                 models.add(new TempModel(i, metaModel, dataModel));
             }
             listView = findViewById(R.id.listView);

@@ -36,11 +36,11 @@ public class AllActivity extends AppCompatActivity {
 //            JSONArray array = new JSONArray(response);
 //            for (int i = 0; i < array.length(); i++) {
 //                JSONObject object = (JSONObject) array.get(i);
-            List<AllModel> models = new ArrayList<>();
+            List<AllDataModel> models = new ArrayList<>();
             for (int i = 0; i < 20; i++) {
-                MetaModel metaModel = new MetaModel(0, null);
-                AllDataModel dataModel = new AllDataModel("12", "12", "12", "2015-07-27 14:29:56");
-                models.add(new AllModel(i, metaModel, dataModel));
+                // MetaModel metaModel = new MetaModel(0, null);
+                // AllDataModel dataModel = new AllDataModel("12", "12", "12", "2015-07-27 14:29:56");
+                models.add(new AllDataModel("temp: 12", "humid: 12", "pressure: 12", "2015-07-27 14:29:56"));
             }
             listView = findViewById(R.id.listView);
             listView.setAdapter(new AllAdapter(this, models));

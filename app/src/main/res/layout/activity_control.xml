@@ -7,47 +7,47 @@
     android:orientation="vertical"
     android:showDividers="middle"
     android:dividerPadding="10dp"
-    tools:context="com.example.zhongrui.myapplication.Activity.MainActivity" >
+    tools:context="com.example.zhongrui.myapplication.Activity.ControlActivity" >
     <Button
-        android:id="@+id/btnOne"
+        android:id="@+id/airOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="查看温度" />
+        android:text="打开空调" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="#000000" />
     <Button
-        android:id="@+id/btnTwo"
+        android:id="@+id/airOff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="查看湿度" />
+        android:text="关闭空调" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="#000000" />
     <Button
-        android:id="@+id/btnThree"
+        android:id="@+id/lightOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="查看大气压" />
+        android:text="打开灯" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="#000000" />
     <Button
-        android:id="@+id/btnFour"
+        android:id="@+id/lightOff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="查看所有" />
+        android:text="关闭灯" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="#000000" />
     <Button
-        android:id="@+id/btnFive"
+        android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="控制家居" />
+        android:text="返回" />
 
 </LinearLayout>

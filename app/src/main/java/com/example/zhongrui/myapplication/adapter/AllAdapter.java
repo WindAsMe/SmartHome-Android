@@ -1,5 +1,6 @@
 package com.example.zhongrui.myapplication.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.zhongrui.myapplication.R;
 import com.example.zhongrui.myapplication.models.AllModel;
+import com.example.zhongrui.myapplication.models.commomModels.AllDataModel;
 
 import java.util.List;
 
@@ -18,10 +20,10 @@ import java.util.List;
  **/
 public class AllAdapter extends BaseAdapter {
 
-    private List<AllModel> mList;
+    private List<AllDataModel> mList;
     private LayoutInflater mInflater;
 
-    public AllAdapter(Context context, List<AllModel> list) {
+    public AllAdapter(Context context, List<AllDataModel> list) {
         mList = list;
         mInflater = LayoutInflater.from(context);
     }
@@ -41,6 +43,7 @@ public class AllAdapter extends BaseAdapter {
         return position;
     }
 
+    @SuppressLint("SetTextI18n")
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.item,null);
@@ -50,13 +53,11 @@ public class AllAdapter extends BaseAdapter {
         TextView titleTextView = convertView.findViewById(R.id.tv_title);
         TextView contentTextView = convertView.findViewById(R.id.tv_content);
 
-        AllModel model = mList.get(position);
+        AllDataModel model = mList.get(position);
 
         // imageView.setImageResource(model.getId());
-        titleTextView.setText(model.getDataModel().getTemp());
-        contentTextView.setText(model.getDataModel().getHumid());
-        contentTextView.setText(model.getDataModel().getPress());
-        contentTextView.setText(model.getDataModel().getTime());
+        titleTextView.setText(model.getTemp());
+        contentTextView.setText(model.getHumid() + model.getPress() + model.getTime());
         return convertView;
     }
 }

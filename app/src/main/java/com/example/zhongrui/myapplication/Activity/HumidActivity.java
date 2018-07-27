@@ -46,7 +46,7 @@ public class HumidActivity extends AppCompatActivity {
             List<HumidModel> models = new ArrayList<>();
             for (int i = 0; i < 20; i++) {
                 MetaModel metaModel = new MetaModel(0, null);
-                HumidDataModel dataModel = new HumidDataModel("1", "2016-07-27 14:29:56");
+                HumidDataModel dataModel = new HumidDataModel("humid: 1", "2016-07-27 14:29:56");
                 models.add(new HumidModel(i, metaModel, dataModel));
             }
             listView = findViewById(R.id.listView);

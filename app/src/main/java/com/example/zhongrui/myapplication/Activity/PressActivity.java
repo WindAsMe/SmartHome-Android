@@ -34,7 +34,7 @@ public class PressActivity extends AppCompatActivity {
             List<PressureModel> models = new ArrayList<>();
             for (int i = 0; i < 20; i++) {
                 MetaModel metaModel = new MetaModel(0, null);
-                PressureDataModel dataModel = new PressureDataModel("10", "2017-07-27 14:29:56");
+                PressureDataModel dataModel = new PressureDataModel("press: 10", "2017-07-27 14:29:56");
                 models.add(new PressureModel(i, metaModel, dataModel));
             }
             listView = findViewById(R.id.listView);

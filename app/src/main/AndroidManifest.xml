@@ -26,7 +26,12 @@
         <activity android:name=".Activity.TempActivity" />
         <activity android:name=".Activity.HumidActivity" />
         <activity android:name=".Activity.PressActivity" />
-        <activity android:name=".Activity.AllActivity"></activity>
+        <activity android:name=".Activity.AllActivity" />
+        <activity android:name=".Activity.ControlActivity" />
+        <activity android:name=".Activity.AirOnActivity" />
+        <activity android:name=".Activity.AirOffActivity" />
+        <activity android:name=".Activity.LightOnActivity" />
+        <activity android:name=".Activity.LightOffActivity"></activity>
     </application>
 
 </manifest>
