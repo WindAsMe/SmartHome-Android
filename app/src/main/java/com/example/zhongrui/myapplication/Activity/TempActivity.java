@@ -26,7 +26,8 @@ public class TempActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temp);
 
-        final Button button = findViewById(R.id.back);
+        final Button button1 = findViewById(R.id.go);
+        final Button button2 = findViewById(R.id.back);
         listView = findViewById(R.id.listView);
 
         List<TempDataModel> list = new ArrayList<>();
@@ -55,7 +56,7 @@ public class TempActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        button.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

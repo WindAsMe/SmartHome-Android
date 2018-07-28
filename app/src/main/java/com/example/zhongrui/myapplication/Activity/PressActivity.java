@@ -26,7 +26,8 @@ public class PressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_press);
 
-        final Button button = findViewById(R.id.back);
+        final Button button1 = findViewById(R.id.go);
+        final Button button2 = findViewById(R.id.back);
         listView = findViewById(R.id.listView);
 
         List<PressureDataModel> list = new ArrayList<>();
@@ -55,7 +56,7 @@ public class PressActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        button.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

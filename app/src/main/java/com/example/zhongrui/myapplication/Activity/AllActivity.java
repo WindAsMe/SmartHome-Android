@@ -27,40 +27,22 @@ public class AllActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all);
 
-        final Button button = findViewById(R.id.back);
+        final Button button1 = findViewById(R.id.go);
+        final Button button2 = findViewById(R.id.back);
         listView = findViewById(R.id.listView);
 
         List<AllDataModel> list = new ArrayList<>();
         try {
-//            String response = httpUtil.HttpGet("humid");
-//            JSONArray array = new JSONArray(response);
-//            for (int i = 0; i < array.length(); i++) {
-//                JSONObject object = (JSONObject) array.get(i);
             List<AllDataModel> models = new ArrayList<>();
             for (int i = 0; i < 20; i++) {
-                // MetaModel metaModel = new MetaModel(0, null);
-                // AllDataModel dataModel = new AllDataModel("12", "12", "12", "2015-07-27 14:29:56");
                 models.add(new AllDataModel("temp: 12", "humid: 12", "pressure: 12", "2015-07-27 14:29:56"));
             }
             listView = findViewById(R.id.listView);
             listView.setAdapter(new AllAdapter(this, models));
-//            HumidModel model = new HumidModel();
-//            model.setMeta((MetaModel) object.get("meta"));
-//            if (model.getMeta().getCode() != 0)
-//                break;
-//            model.setDataModel((HumidDataModel) object.get("data"));
-//            Log.d("object ",model.toString());
-//            list.add(new HumidDataModel("湿度" + model.getDataModel().getHumid(), "时间"+model.getDataModel().toString()));
-//            listView = findViewById(R.id.listView);
-//            listView.setAdapter(new HumidAdapter(this, list));
-
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        button.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

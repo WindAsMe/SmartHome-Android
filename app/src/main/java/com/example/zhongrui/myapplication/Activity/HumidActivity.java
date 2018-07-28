@@ -31,7 +31,8 @@ public class HumidActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_humid);
 
-        final Button button = findViewById(R.id.back);
+        final Button button1 = findViewById(R.id.go);
+        final Button button2 = findViewById(R.id.back);
         listView = findViewById(R.id.listView);
         List<HumidDataModel> list = new ArrayList<>();
         try {
@@ -46,7 +47,7 @@ public class HumidActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        button.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

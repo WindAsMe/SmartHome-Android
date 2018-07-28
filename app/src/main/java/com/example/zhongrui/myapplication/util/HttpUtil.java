@@ -13,7 +13,7 @@ import okhttp3.Request;
 
 public class HttpUtil {
     // Waiting Adjusting...
-    private final static String pythonServeleturl = "http://127.0.0.1:8090/";
+    private final static String pythonServleturl = "http://127.0.0.1:8090/";
     private static OkHttpClient client = new OkHttpClient();
 
     // flag represent the movement:
@@ -22,7 +22,7 @@ public class HttpUtil {
     // Light on: 3
     // Light off: 4
     public static void HomeControl(final View v, final int flag) {
-        Log.v("invoke HomeControl {}", pythonServeleturl + "home?flag=" + flag);
+        Log.v("invoke HomeControl {}", pythonServleturl + "home?flag=" + flag);
         new Thread (new Runnable() {
             @Override
             public void run() {
@@ -30,7 +30,7 @@ public class HttpUtil {
                 Handler handler = new Handler(Looper.getMainLooper());
                 try {
                     Request request = new Request.Builder()
-                            .url(pythonServeleturl + "home?flag=" + flag)
+                            .url(pythonServleturl + "home?flag=" + flag)
                             .build();
                     Boolean tip = client.newCall(request).execute().isSuccessful();
                     if (tip && flag == 1) {

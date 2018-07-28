@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activity.PressActivity">
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="375dp"
+        android:layout_height="593dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="47dp">
+    </ListView>
+
+    <Button
+        android:id="@+id/go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="130dp"
+        android:layout_y="400dp"
+        android:text="查看" />
+
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_x="130dp"
+        android:layout_y="480dp"
         android:text="返回" />
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="587dp"
-        tools:layout_editor_absoluteY="53dp">
-
-    </ListView>
-</android.support.constraint.ConstraintLayout>
+</AbsoluteLayout>
