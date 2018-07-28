@@ -1,53 +1,48 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:divider="@drawable/liner"
-    android:orientation="vertical"
-    android:showDividers="middle"
-    android:dividerPadding="10dp"
-    tools:context="com.example.zhongrui.myapplication.Activity.MainActivity" >
-    <Button
-        android:id="@+id/btnOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="查看温度" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#000000" />
-    <Button
-        android:id="@+id/btnTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="查看湿度" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#000000" />
-    <Button
-        android:id="@+id/btnThree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="查看大气压" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#000000" />
-    <Button
-        android:id="@+id/btnFour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="查看所有" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#000000" />
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.zhongrui.myapplication.Activity.MainActivity">
     <Button
         android:id="@+id/btnFive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="400px"
+        android:layout_height="200px"
+        android:layout_centerInParent="true"
+        android:textColor="@drawable/test_color"
         android:text="控制家居" />
+    <Button
+        android:id="@+id/btnOne"
+        android:layout_width="400px"
+        android:layout_height="200px"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@+id/btnFive"
+        android:textColor="@drawable/test_color"
+        android:text="查看温度" />
+    <Button
+        android:id="@+id/btnTwo"
+        android:layout_width="400px"
+        android:layout_height="200px"
+        android:layout_centerInParent="true"
+        android:layout_toRightOf="@id/btnFive"
+        android:textColor="@drawable/test_color"
+        android:text="查看湿度"/>
+    <Button
+        android:id="@+id/btnThree"
+        android:layout_width="400px"
+        android:layout_height="200px"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/btnFive"
+        android:textColor="@drawable/test_color"
+        android:text="查看大气压"/>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/btnFour"
+        android:layout_width="400px"
+        android:layout_height="200px"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/btnFive"
+        android:textColor="@drawable/test_color"
+        android:text="查看所有" />
+
+</RelativeLayout>

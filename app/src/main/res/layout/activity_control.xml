@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
@@ -9,45 +9,44 @@
     android:dividerPadding="10dp"
     tools:context="com.example.zhongrui.myapplication.Activity.ControlActivity" >
     <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@drawable/test_color"
+        android:text="返回" />
+    <Button
         android:id="@+id/airOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@+id/back"
+        android:textColor="@drawable/test_color"
         android:text="打开空调" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#000000" />
     <Button
         android:id="@+id/airOff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_toRightOf="@+id/back"
+        android:textColor="@drawable/test_color"
         android:text="关闭空调" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#000000" />
     <Button
         android:id="@+id/lightOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/back"
+        android:textColor="@drawable/test_color"
         android:text="打开灯" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#000000" />
     <Button
         android:id="@+id/lightOff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/back"
+        android:textColor="@drawable/test_color"
         android:text="关闭灯" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#000000" />
-    <Button
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="返回" />
 
-</LinearLayout>
+
+</RelativeLayout>
