@@ -4,27 +4,28 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activity.TempActivity">
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="375dp"
-        android:layout_height="593dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="47dp">
-    </ListView>
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_y="150dp"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="130dp"
-        android:layout_y="400dp"
-        android:text="查看" />
+        android:layout_y="300dp"
+        android:text="刷新" />
 
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="130dp"
-        android:layout_y="480dp"
+        android:layout_y="400dp"
         android:text="返回" />
 </AbsoluteLayout>

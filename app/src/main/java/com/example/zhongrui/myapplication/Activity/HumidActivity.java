@@ -1,10 +1,13 @@
 package com.example.zhongrui.myapplication.Activity;
 
+import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.zhongrui.myapplication.R;
 import com.example.zhongrui.myapplication.adapter.HumidAdapter;
@@ -23,9 +26,10 @@ public class HumidActivity extends AppCompatActivity {
     private final static String url = "http://127.0.0.1:8090/";
     private static OkHttpClient client = new OkHttpClient();
     private HttpUtil httpUtil = new HttpUtil();
-    private ListView listView;
+    private Float humid = 54f;
+    private String time = "2018年12月31日 15:21:01";
 
-
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,17 +37,17 @@ public class HumidActivity extends AppCompatActivity {
 
         final Button button1 = findViewById(R.id.go);
         final Button button2 = findViewById(R.id.back);
-        listView = findViewById(R.id.listView);
+        final TextView textView = findViewById(R.id.humid);
         List<HumidDataModel> list = new ArrayList<>();
         try {
-            List<HumidModel> models = new ArrayList<>();
-            for (int i = 0; i < 20; i++) {
-                MetaModel metaModel = new MetaModel(0, null);
-                HumidDataModel dataModel = new HumidDataModel("temp: 100", "2018-07-27 14:29:56");
-                models.add(new HumidModel(i, metaModel, dataModel));
-            }
-            listView = findViewById(R.id.listView);
-            listView.setAdapter(new HumidAdapter(this, models));
+            // TODO: okHttp GET the Response
+            textView.setText("湿度： " + humid + "%                                " + "时间: " + time);
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    textView.setText("湿度： " + (float)(Math.random() * 100) + "%                               " + "时间: " + time);
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }

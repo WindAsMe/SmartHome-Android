@@ -4,13 +4,14 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activity.AllActivity">
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="375dp"
-        android:layout_height="593dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="47dp">
-    </ListView>
+    <TextView
+        android:id="@+id/all"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_y="150dp"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/go"
@@ -18,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_x="130dp"
         android:layout_y="400dp"
-        android:text="查看" />
+        android:text="更新" />
 
     <Button
         android:id="@+id/back"
