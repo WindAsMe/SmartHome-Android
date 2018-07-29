@@ -1,11 +1,15 @@
 package com.example.zhongrui.myapplication.Activity;
 
 import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.zhongrui.myapplication.R;
@@ -13,14 +17,15 @@ import com.example.zhongrui.myapplication.models.TempModel;
 import com.example.zhongrui.myapplication.models.commomModels.TempDataModel;
 import com.example.zhongrui.myapplication.util.HttpUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TempActivity extends AppCompatActivity {
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
-    private HttpUtil httpUtil = new HttpUtil();
-    private Float temp =24f;
-    private String time = "2018年12月31日 15:21:01";
+public class TempActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -32,31 +37,97 @@ public class TempActivity extends AppCompatActivity {
         final Button button2 = findViewById(R.id.back);
         final TextView textView = findViewById(R.id.temp);
 
-        try {
-            String json = "{\n" +
-                    "    \"meta\": {\n" +
-                    "        \"code\": 0,\n" +
-                    "        \"errorMsg\": null\n" +
-                    "    },\n" +
-                    "    \"data\": {\n" +
-                    "        \"id\": \"6\",\n" +
-                    "        \"temp\": \"12.0\",\n" +
-                    "        \"time\": \"2018-07-29 10:53:19\"\n" +
-                    "    }\n" +
-                    "}";
+        // url is adjustment neede
+        final String url = "http://127.0.0.1:8090/temp";
 
-            JSONObject meta = JSONObject.parseObject(json).getJSONObject("meta");
-            if (Integer.valueOf(0).equals(meta.get("code"))) {
-                JSONObject data = JSONObject.parseObject(json).getJSONObject("data");
-                textView.setText("温度： " + data.get("temp") + "°C                               " + "时间: " + data.get("time"));
-            }
+        try {
+            final OkHttpClient client = new OkHttpClient();
+            new Thread(new Runnable() {
+                Handler handler = new Handler(Looper.getMainLooper());
+                @Override
+                public void run() {
+                    try {
+
+                        // Send the Request
+                        Request request = new Request.Builder().url(url).build();
+                        Response response = client.newCall(request).execute();
+                        Log.v("invoke url{}", url);
+                        JSONObject meta = JSONObject.parseObject(response.toString()).getJSONObject("meta");
+
+                        // Success
+                        if (Integer.valueOf(0).equals(meta.get("code"))) {
+                            JSONObject data = JSONObject.parseObject(response.toString()).getJSONObject("data");
+                            textView.setText("温度: " + data.get("temp") +
+                                    "°C                                " +
+                                    "时间: " + data.get("time"));
+                        } else {
+                            Log.v("invoke Toast{}", meta.toString());
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(TempActivity.this,
+                                            "网络异常,请检查网络！", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    } catch (IOException e) {
+                        Log.v("Exception", e.getMessage());
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(TempActivity.this,
+                                        "网络异常,请检查网络！", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }
+            }).start();
+
 
             // TODO: okHttp GET the Response
-            //textView.setText("温度： " + temp + "°C                                " + "时间: " + time);
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    textView.setText("温度： " + (float)(Math.random() * 35) + "°C                                " + "时间: " + time);
+                public void onClick(final View view) {
+                    new Thread(new Runnable() {
+                        // subprocess pop Toast needed
+                        Handler handler = new Handler(Looper.getMainLooper());
+                        @Override
+                        public void run() {
+                            try {
+                                // Send the Request
+                                // url is adjustment needed
+                                Request request = new Request.Builder().url(url).build();
+                                Log.v("invoke url{}", url);
+                                Response response = client.newCall(request).execute();
+                                JSONObject meta = JSONObject.parseObject(response.toString()).getJSONObject("meta");
+
+                                // Success
+                                if (Integer.valueOf(0).equals(meta.get("code"))) {
+                                    JSONObject data = JSONObject.parseObject(response.toString()).getJSONObject("data");
+                                    textView.setText("温度: " + data.get("temp") +
+                                            "°C                                " +
+                                            "时间: " + data.get("time"));
+                                } else {
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(view.getContext(),
+                                                    "网络异常,请检查网络！", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            } catch (IOException e) {
+                                Log.v("Exception", e.getMessage());
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(view.getContext(),
+                                                "网络异常,请检查网络！", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        }
+                    }).start();
                 }
             });
         } catch (Exception e) {
