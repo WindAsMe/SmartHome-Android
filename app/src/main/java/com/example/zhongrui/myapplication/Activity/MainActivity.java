@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.zhongrui.myapplication.R;
-import com.example.zhongrui.myapplication.util.HttpUtil;
 
 public class MainActivity extends AppCompatActivity {
 

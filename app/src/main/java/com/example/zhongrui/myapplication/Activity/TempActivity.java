@@ -5,13 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.zhongrui.myapplication.R;
-import com.example.zhongrui.myapplication.adapter.TempAdapter;
 import com.example.zhongrui.myapplication.models.TempModel;
-import com.example.zhongrui.myapplication.models.commomModels.MetaModel;
 import com.example.zhongrui.myapplication.models.commomModels.TempDataModel;
 import com.example.zhongrui.myapplication.util.HttpUtil;
 
@@ -34,7 +31,7 @@ public class TempActivity extends AppCompatActivity {
         final Button button2 = findViewById(R.id.back);
         final TextView textView = findViewById(R.id.temp);
 
-        List<TempDataModel> list = new ArrayList<>();
+        TempModel model = new TempModel();
         try {
             // TODO: okHttp GET the Response
             textView.setText("温度： " + temp + "°C                                " + "时间: " + time);

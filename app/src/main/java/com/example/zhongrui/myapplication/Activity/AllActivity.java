@@ -37,7 +37,7 @@ public class AllActivity extends AppCompatActivity {
         final Button button2 = findViewById(R.id.back);
         final TextView textView = findViewById(R.id.all);
 
-        List<AllDataModel> list = new ArrayList<>();
+        AllModel model = new AllModel();
         try {
             textView.setText("温度： " + temp + "°C                                "
                     + "湿度： " + humid + "%                                "
