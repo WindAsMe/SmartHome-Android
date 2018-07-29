@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.zhongrui.myapplication.R;
 import com.example.zhongrui.myapplication.models.TempModel;
 import com.example.zhongrui.myapplication.models.commomModels.TempDataModel;
@@ -31,10 +32,27 @@ public class TempActivity extends AppCompatActivity {
         final Button button2 = findViewById(R.id.back);
         final TextView textView = findViewById(R.id.temp);
 
-        TempModel model = new TempModel();
         try {
+            String json = "{\n" +
+                    "    \"meta\": {\n" +
+                    "        \"code\": 0,\n" +
+                    "        \"errorMsg\": null\n" +
+                    "    },\n" +
+                    "    \"data\": {\n" +
+                    "        \"id\": \"6\",\n" +
+                    "        \"temp\": \"12.0\",\n" +
+                    "        \"time\": \"2018-07-29 10:53:19\"\n" +
+                    "    }\n" +
+                    "}";
+
+            JSONObject meta = JSONObject.parseObject(json).getJSONObject("meta");
+            if (Integer.valueOf(0).equals(meta.get("code"))) {
+                JSONObject data = JSONObject.parseObject(json).getJSONObject("data");
+                textView.setText("温度： " + data.get("temp") + "°C                               " + "时间: " + data.get("time"));
+            }
+
             // TODO: okHttp GET the Response
-            textView.setText("温度： " + temp + "°C                                " + "时间: " + time);
+            //textView.setText("温度： " + temp + "°C                                " + "时间: " + time);
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

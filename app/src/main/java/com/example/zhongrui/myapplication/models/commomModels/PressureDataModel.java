@@ -6,15 +6,25 @@ package com.example.zhongrui.myapplication.models.commomModels;
  **/
 public class PressureDataModel {
 
+    private Integer id;
     private String press;
     private String time;
 
     public PressureDataModel() {
     }
 
-    public PressureDataModel(String press, String time) {
+    public PressureDataModel(Integer id, String press, String time) {
+        this.id = id;
         this.press = press;
         this.time = time;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getPress() {
@@ -36,7 +46,8 @@ public class PressureDataModel {
     @Override
     public String toString() {
         return "PressureDataModel{" +
-                "press='" + press + '\'' +
+                "id=" + id +
+                ", press='" + press + '\'' +
                 ", time='" + time + '\'' +
                 '}';
     }

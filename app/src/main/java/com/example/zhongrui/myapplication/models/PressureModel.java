@@ -5,25 +5,15 @@ import com.example.zhongrui.myapplication.models.commomModels.PressureDataModel;
 
 public class PressureModel {
 
-    private Integer id;
     private MetaModel meta;
     private PressureDataModel dataModel;
 
     public PressureModel() {
     }
 
-    public PressureModel(Integer id, MetaModel meta, PressureDataModel dataModel) {
-        this.id = id;
+    public PressureModel( MetaModel meta, PressureDataModel dataModel) {
         this.meta = meta;
         this.dataModel = dataModel;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public MetaModel getMeta() {
@@ -45,7 +35,6 @@ public class PressureModel {
     @Override
     public String toString() {
         return "PressureModel{" +
-                "id=" + id +
                 ", meta=" + meta.toString() +
                 ", dataModel=" + dataModel.toString() +
                 '}';

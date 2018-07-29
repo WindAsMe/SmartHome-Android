@@ -7,13 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.zhongrui.myapplication.R;
 import com.example.zhongrui.myapplication.models.HumidModel;
 import com.example.zhongrui.myapplication.models.commomModels.HumidDataModel;
 import com.example.zhongrui.myapplication.util.HttpUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class HumidActivity extends AppCompatActivity {
 
@@ -32,10 +31,30 @@ public class HumidActivity extends AppCompatActivity {
         final Button button1 = findViewById(R.id.go);
         final Button button2 = findViewById(R.id.back);
         final TextView textView = findViewById(R.id.humid);
-        HumidModel model = new HumidModel();
         try {
+
+            String json = "{\n" +
+                    "    \"meta\": {\n" +
+                    "        \"code\": 0,\n" +
+                    "        \"errorMsg\": null\n" +
+                    "    },\n" +
+                    "    \"data\": {\n" +
+                    "        \"id\": \"6\",\n" +
+                    "        \"humid\": \"88.0\",\n" +
+                    "        \"time\": \"2018-07-29 10:53:19\"\n" +
+                    "    }\n" +
+                    "}";
+            JSONObject meta = JSONObject.parseObject(json).getJSONObject("meta");
+            if (Integer.valueOf(0).equals(meta.get("code"))) {
+                JSONObject data = JSONObject.parseObject(json).getJSONObject("data");
+                textView.setText("湿度： " + data.get("humid") + "%                               " + "时间: " + data.get("time"));
+            }
+
+
+
+
             // TODO: okHttp GET the Response
-            textView.setText("湿度： " + humid + "%                                " + "时间: " + time);
+            //textView.setText("湿度： " + humid + "%                                " + "时间: " + time);
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

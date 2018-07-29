@@ -5,27 +5,16 @@ import com.example.zhongrui.myapplication.models.commomModels.MetaModel;
 
 public class HumidModel {
 
-    private Integer id;
     private MetaModel meta;
-    private HumidDataModel dataModel;
+    private HumidDataModel data;
 
     public HumidModel() {
     }
 
-    public HumidModel(Integer id, MetaModel meta, HumidDataModel dataModel) {
-        this.id = id;
+    public HumidModel(MetaModel meta, HumidDataModel data) {
         this.meta = meta;
-        this.dataModel = dataModel;
+        this.data = data;
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public MetaModel getMeta() {
         return meta;
     }
@@ -35,19 +24,18 @@ public class HumidModel {
     }
 
     public HumidDataModel getDataModel() {
-        return dataModel;
+        return data;
     }
 
-    public void setDataModel(HumidDataModel dataModel) {
-        this.dataModel = dataModel;
+    public void setDataModel(HumidDataModel data) {
+        this.data = data;
     }
 
     @Override
     public String toString() {
         return "HumidModel{" +
-                "id=" + id +
-                ", meta=" + meta.toString() +
-                ", dataModel=" + dataModel.toString() +
+                "meta=" + meta +
+                ", data=" + data +
                 '}';
     }
 }

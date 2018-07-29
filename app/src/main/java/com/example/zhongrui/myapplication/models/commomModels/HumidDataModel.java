@@ -6,15 +6,25 @@ package com.example.zhongrui.myapplication.models.commomModels;
  **/
 public class HumidDataModel {
 
+    private Integer id;
     private String humid;
     private String time;
 
     public HumidDataModel() {
     }
 
-    public HumidDataModel(String humid, String time) {
+    public HumidDataModel(Integer id, String humid, String time) {
+        this.id = id;
         this.humid = humid;
         this.time = time;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getHumid() {
@@ -36,7 +46,8 @@ public class HumidDataModel {
     @Override
     public String toString() {
         return "HumidDataModel{" +
-                "humid='" + humid + '\'' +
+                "id=" + id +
+                ", humid='" + humid + '\'' +
                 ", time='" + time + '\'' +
                 '}';
     }
