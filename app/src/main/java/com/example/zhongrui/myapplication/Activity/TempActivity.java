@@ -38,7 +38,7 @@ public class TempActivity extends AppCompatActivity {
         final TextView textView = findViewById(R.id.temp);
 
         // url is adjustment needed
-        final String url = "http://10.0.1.4/temp";
+        final String url = "http://13.76.133.103/temp";
 
         try {
             final OkHttpClient client = new OkHttpClient();

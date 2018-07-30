@@ -40,7 +40,7 @@ public class PressActivity extends AppCompatActivity {
         final Button button2 = findViewById(R.id.back);
         final TextView textView = findViewById(R.id.press);
 
-        final String url = "http://10.0.1.4/press";
+        final String url = "http://13.76.133.103/press";
         try {
 
             final OkHttpClient client = new OkHttpClient();
@@ -53,7 +53,7 @@ public class PressActivity extends AppCompatActivity {
                         // Send the Request
                         Request request = new Request.Builder().url(url).build();
                         Response response = client.newCall(request).execute();
-                        Log.v("invoke url{} ", url);
+                        Log.v("invoke url{} ", url + "  " + response.toString() + "  " + response.message());
                         JSONObject meta = JSONObject.parseObject(response.toString()).getJSONObject("meta");
 
                         // Success

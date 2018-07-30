@@ -3,6 +3,7 @@ package com.example.zhongrui.myapplication.Activity;
 import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -45,12 +46,11 @@ public class HumidActivity extends AppCompatActivity {
                     "    }\n" +
                     "}";
             JSONObject meta = JSONObject.parseObject(json).getJSONObject("meta");
+            Log.v("meta {}", meta.toString());
             if (Integer.valueOf(0).equals(meta.get("code"))) {
                 JSONObject data = JSONObject.parseObject(json).getJSONObject("data");
                 textView.setText("湿度： " + data.get("humid") + "%                               " + "时间: " + data.get("time"));
             }
-
-
 
 
             // TODO: okHttp GET the Response
