@@ -13,7 +13,7 @@ import okhttp3.Request;
 
 public class HttpUtil {
     // Waiting Adjusting...
-    private final static String pythonServleturl = "http://127.0.0.1:8090/";
+    private final static String pythonServleturl = "http://10.0.1.4:8090/";
     private static OkHttpClient client = new OkHttpClient();
 
     // flag represent the movement:

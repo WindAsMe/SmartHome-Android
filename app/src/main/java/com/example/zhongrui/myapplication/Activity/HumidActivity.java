@@ -17,7 +17,7 @@ import com.example.zhongrui.myapplication.util.HttpUtil;
 public class HumidActivity extends AppCompatActivity {
 
     // Waiting Adjusting...
-    private final static String url = "http://127.0.0.1:8090/";
+    private final static String url = "http://10.0.1.4:8090/";
     private HttpUtil httpUtil = new HttpUtil();
     private Float humid = 54f;
     private String time = "2018年12月31日 15:21:01";

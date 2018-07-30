@@ -40,7 +40,7 @@ public class PressActivity extends AppCompatActivity {
         final Button button2 = findViewById(R.id.back);
         final TextView textView = findViewById(R.id.press);
 
-        final String url = "http://127.0.0.1:8090/press";
+        final String url = "http://10.0.1.4/press";
         try {
 
             final OkHttpClient client = new OkHttpClient();
