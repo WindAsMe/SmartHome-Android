@@ -1,6 +1,7 @@
 package com.example.zhongrui.myapplication.Activity;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         final Button btnThree = findViewById(R.id.btnThree);
         final Button btnFour = findViewById(R.id.btnFour);
         final Button btnFive = findViewById(R.id.btnFive);
+        final Button btnSix = findViewById(R.id.btnSix);
 
         btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ControlActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnSix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PackageManager packageManager = getPackageManager();
+                Intent intent = packageManager.getLaunchIntentForPackage("com.realvnc.viewer.android");
                 startActivity(intent);
             }
         });
