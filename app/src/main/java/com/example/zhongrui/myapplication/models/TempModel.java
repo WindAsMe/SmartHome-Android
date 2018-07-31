@@ -5,25 +5,15 @@ import com.example.zhongrui.myapplication.models.commomModels.TempDataModel;
 
 public class TempModel {
 
-    private Integer id;
     private MetaModel meta;
     private TempDataModel dataModel;
 
     public TempModel() {
     }
 
-    public TempModel(Integer id, MetaModel meta, TempDataModel dataModel) {
-        this.id = id;
+    public TempModel( MetaModel meta, TempDataModel dataModel) {
         this.meta = meta;
         this.dataModel = dataModel;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public MetaModel getMeta() {
@@ -45,7 +35,6 @@ public class TempModel {
     @Override
     public String toString() {
         return "TempModel{" +
-                "id=" + id +
                 ", meta=" + meta.toString() +
                 ", dataModel=" + dataModel.toString() +
                 '}';

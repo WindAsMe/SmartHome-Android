@@ -41,7 +41,7 @@ public class AllActivity extends AppCompatActivity {
                     "        \"code\": 0,\n" +
                     "        \"errorMsg\": null\n" +
                     "    },\n" +
-                    "    \"data\": {\n" +
+                    "    \"PressDataModel\": {\n" +
                     "        \"temp\": \"30.0\",\n" +
                     "        \"humid\": \"88.0\",\n" +
                     "        \"time\": \"2018-07-29 10:53:20\",\n" +
@@ -52,7 +52,7 @@ public class AllActivity extends AppCompatActivity {
 
             JSONObject meta = JSONObject.parseObject(json).getJSONObject("meta");
             if (Integer.valueOf(0).equals(meta.get("code"))) {
-                JSONObject data = JSONObject.parseObject(json).getJSONObject("data");
+                JSONObject data = JSONObject.parseObject(json).getJSONObject("PressDataModel");
                 textView.setText("温度: " + data.get("temp") + "°C                                "
                         + "湿度: " + data.get("humid")  + "%                                "
                         + "气压: " + data.get("press")  + "Pa                                "

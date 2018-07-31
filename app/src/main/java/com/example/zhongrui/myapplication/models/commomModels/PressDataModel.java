@@ -4,19 +4,19 @@ package com.example.zhongrui.myapplication.models.commomModels;
  * Create By WindAsMe on 18-7-27
  * Location: ../Home/AndroidProjects/MyApplication
  **/
-public class PressureDataModel {
+public class PressDataModel {
 
     private Integer id;
-    private String press;
     private String time;
+    private String press;
 
-    public PressureDataModel() {
+    public PressDataModel() {
     }
 
-    public PressureDataModel(Integer id, String press, String time) {
+    public PressDataModel(Integer id, String time, String press) {
         this.id = id;
-        this.press = press;
         this.time = time;
+        this.press = press;
     }
 
     public Integer getId() {
@@ -45,7 +45,7 @@ public class PressureDataModel {
 
     @Override
     public String toString() {
-        return "PressureDataModel{" +
+        return "PressDataModel{" +
                 "id=" + id +
                 ", press='" + press + '\'' +
                 ", time='" + time + '\'' +

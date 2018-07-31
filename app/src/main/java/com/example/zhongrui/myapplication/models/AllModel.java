@@ -9,7 +9,6 @@ import com.example.zhongrui.myapplication.models.commomModels.MetaModel;
  **/
 public class AllModel {
 
-    private Integer id;
     private MetaModel meta;
     private AllDataModel dataModel;
 
@@ -17,17 +16,8 @@ public class AllModel {
     }
 
     public AllModel(Integer id, MetaModel meta, AllDataModel dataModel) {
-        this.id = id;
         this.meta = meta;
         this.dataModel = dataModel;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public MetaModel getMeta() {
@@ -49,7 +39,6 @@ public class AllModel {
     @Override
     public String toString() {
         return "AllModel{" +
-                "id=" + id +
                 ", meta=" + meta +
                 ", dataModel=" + dataModel +
                 '}';

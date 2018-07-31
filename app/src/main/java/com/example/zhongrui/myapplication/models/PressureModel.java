@@ -1,19 +1,19 @@
 package com.example.zhongrui.myapplication.models;
 
 import com.example.zhongrui.myapplication.models.commomModels.MetaModel;
-import com.example.zhongrui.myapplication.models.commomModels.PressureDataModel;
+import com.example.zhongrui.myapplication.models.commomModels.PressDataModel;
 
 public class PressureModel {
 
     private MetaModel meta;
-    private PressureDataModel dataModel;
+    private PressDataModel pressDataModelModel;
 
     public PressureModel() {
     }
 
-    public PressureModel( MetaModel meta, PressureDataModel dataModel) {
+    public PressureModel( MetaModel meta, PressDataModel pressDataModelModel) {
         this.meta = meta;
-        this.dataModel = dataModel;
+        this.pressDataModelModel = pressDataModelModel;
     }
 
     public MetaModel getMeta() {
@@ -24,19 +24,19 @@ public class PressureModel {
         this.meta = meta;
     }
 
-    public PressureDataModel getDataModel() {
-        return dataModel;
+    public PressDataModel getPressDataModelModel() {
+        return pressDataModelModel;
     }
 
-    public void setDataModel(PressureDataModel dataModel) {
-        this.dataModel = dataModel;
+    public void setPressDataModelModel(PressDataModel pressDataModelModel) {
+        this.pressDataModelModel = pressDataModelModel;
     }
 
     @Override
     public String toString() {
         return "PressureModel{" +
                 ", meta=" + meta.toString() +
-                ", dataModel=" + dataModel.toString() +
+                ", pressDataModelModel=" + pressDataModelModel.toString() +
                 '}';
     }
 }

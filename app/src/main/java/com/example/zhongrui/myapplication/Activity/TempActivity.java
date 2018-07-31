@@ -13,13 +13,8 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.zhongrui.myapplication.R;
-import com.example.zhongrui.myapplication.models.TempModel;
-import com.example.zhongrui.myapplication.models.commomModels.TempDataModel;
-import com.example.zhongrui.myapplication.util.HttpUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -38,7 +33,7 @@ public class TempActivity extends AppCompatActivity {
         final TextView textView = findViewById(R.id.temp);
 
         // url is adjustment needed
-        final String url = "http://13.76.133.103/temp";
+        final String url = "http://13.67.109.181:8080/temp";
 
         try {
             final OkHttpClient client = new OkHttpClient();
@@ -49,24 +44,34 @@ public class TempActivity extends AppCompatActivity {
                     try {
 
                         // Send the Request
-                        Request request = new Request.Builder().url(url).build();
+                        Request request = new Request
+                                .Builder()
+                                .url(url)
+                                .build();
                         Response response = client.newCall(request).execute();
-                        Log.v("invoke url{}", url);
-                        JSONObject meta = JSONObject.parseObject(response.toString()).getJSONObject("meta");
 
+                        Log.v("invoke url{}", url);
+                        String s = response.body().string();
+                        JSONObject object = JSONObject.parseObject(s);
+                        JSONObject meta = object.getJSONObject("meta");
                         // Success
                         if (Integer.valueOf(0).equals(meta.get("code"))) {
-                            JSONObject data = JSONObject.parseObject(response.toString()).getJSONObject("data");
-                            textView.setText("温度: " + data.get("temp") +
-                                    "°C                                " +
-                                    "时间: " + data.get("time"));
+                            final JSONObject data = object.getJSONObject("data");
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    textView.setText("温度: " + data.get("temp") +
+                                            "°C                                " +
+                                            "时间: " + data.get("time"));
+                                }
+                            });
                         } else {
                             Log.v("invoke Toast{}", meta.toString());
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
                                     Toast.makeText(TempActivity.this,
-                                            "网络异常,请检查网络！", Toast.LENGTH_SHORT).show();
+                                            "请求失败, 请稍后重试！", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -99,20 +104,28 @@ public class TempActivity extends AppCompatActivity {
                                 Request request = new Request.Builder().url(url).build();
                                 Log.v("invoke url{}", url);
                                 Response response = client.newCall(request).execute();
-                                JSONObject meta = JSONObject.parseObject(response.toString()).getJSONObject("meta");
+                                String s = response.body().string();
+
+                                JSONObject object = JSONObject.parseObject(s);
+                                JSONObject meta = object.getJSONObject("meta");
 
                                 // Success
                                 if (Integer.valueOf(0).equals(meta.get("code"))) {
-                                    JSONObject data = JSONObject.parseObject(response.toString()).getJSONObject("data");
-                                    textView.setText("温度: " + data.get("temp") +
-                                            "°C                                " +
-                                            "时间: " + data.get("time"));
+                                    final JSONObject data = object.getJSONObject("data");
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            textView.setText("温度: " + data.get("temp") +
+                                                    "°C                                " +
+                                                    "时间: " + data.get("time"));
+                                        }
+                                    });
                                 } else {
                                     handler.post(new Runnable() {
                                         @Override
                                         public void run() {
                                             Toast.makeText(view.getContext(),
-                                                    "网络异常,请检查网络！", Toast.LENGTH_SHORT).show();
+                                                    "请求失败, 请稍后重试！", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }

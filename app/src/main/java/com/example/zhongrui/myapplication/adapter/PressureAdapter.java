@@ -53,8 +53,8 @@ public class PressureAdapter extends BaseAdapter {
         PressureModel model = mList.get(position);
 
         // imageView.setImageResource(model.getId());
-        titleTextView.setText(model.getDataModel().getPress());
-        contentTextView.setText(model.getDataModel().getTime());
+        titleTextView.setText(model.getPressDataModelModel().getPress());
+        contentTextView.setText(model.getPressDataModelModel().getTime());
         return convertView;
     }
 }

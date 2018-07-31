@@ -35,7 +35,7 @@ public class HumidModel {
     public String toString() {
         return "HumidModel{" +
                 "meta=" + meta +
-                ", data=" + data +
+                ", PressDataModel=" + data +
                 '}';
     }
 }

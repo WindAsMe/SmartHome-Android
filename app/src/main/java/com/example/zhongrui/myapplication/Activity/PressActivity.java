@@ -11,12 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.zhongrui.myapplication.R;
-import com.example.zhongrui.myapplication.models.PressureModel;
-import com.example.zhongrui.myapplication.models.commomModels.PressureDataModel;
-import com.example.zhongrui.myapplication.util.HttpUtil;
 
 import java.io.IOException;
 
@@ -40,7 +36,7 @@ public class PressActivity extends AppCompatActivity {
         final Button button2 = findViewById(R.id.back);
         final TextView textView = findViewById(R.id.press);
 
-        final String url = "http://13.76.133.103/press";
+        final String url = "http://13.67.109.181:8080/press";
         try {
 
             final OkHttpClient client = new OkHttpClient();
@@ -53,22 +49,29 @@ public class PressActivity extends AppCompatActivity {
                         // Send the Request
                         Request request = new Request.Builder().url(url).build();
                         Response response = client.newCall(request).execute();
-                        Log.v("invoke url{} ", url + "  " + response.toString() + "  " + response.message());
-                        JSONObject meta = JSONObject.parseObject(response.toString()).getJSONObject("meta");
 
-                        // Success
+                        String s = response.body().string();
+                        Log.v("invoke url{} ", url + "  " + response.toString() + "  " + response.message());
+                        Log.v("body {}", s);
+                        JSONObject object = JSONObject.parseObject(s);
+                        JSONObject meta = object.getJSONObject("meta");
                         if (Integer.valueOf(0).equals(meta.get("code"))) {
-                            JSONObject data = JSONObject.parseObject(response.toString()).getJSONObject("data");
-                            textView.setText("气压: " + data.get("press") +
-                                    "Pa                                " +
-                                    "时间: " + data.get("time"));
+                            final JSONObject data = object.getJSONObject("data");
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    textView.setText("气压: " + data.get("press") +
+                                            "Pa                                " +
+                                            "时间: " + data.get("time"));
+                                }
+                            });
                         } else {
                             Log.v("invoke Toast{} ", meta.toString());
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
                                     Toast.makeText(PressActivity.this,
-                                            "网络异常,请检查网络！", Toast.LENGTH_SHORT).show();
+                                            "请求失败, 请稍后重试！", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -101,20 +104,27 @@ public class PressActivity extends AppCompatActivity {
                                 Request request = new Request.Builder().url(url).build();
                                 Log.v("invoke url{} ", url);
                                 Response response = client.newCall(request).execute();
-                                JSONObject meta = JSONObject.parseObject(response.toString()).getJSONObject("meta");
+                                String s = response.body().string();
+                                JSONObject object = JSONObject.parseObject(s);
+                                JSONObject meta = object.getJSONObject("meta");
 
                                 // Success
                                 if (Integer.valueOf(0).equals(meta.get("code"))) {
-                                    JSONObject data = JSONObject.parseObject(response.toString()).getJSONObject("data");
-                                    textView.setText("气压: " + data.get("temp") +
-                                            "Pa                                " +
-                                            "时间: " + data.get("time"));
+                                    final JSONObject data = object.getJSONObject("data");
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            textView.setText("气压: " + data.get("press") +
+                                                    "Pa                                " +
+                                                    "时间: " + data.get("time"));
+                                        }
+                                    });
                                 } else {
                                     handler.post(new Runnable() {
                                         @Override
                                         public void run() {
                                             Toast.makeText(view.getContext(),
-                                                    "网络异常,请检查网络！", Toast.LENGTH_SHORT).show();
+                                                    "请求失败, 请稍后重试！", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }
