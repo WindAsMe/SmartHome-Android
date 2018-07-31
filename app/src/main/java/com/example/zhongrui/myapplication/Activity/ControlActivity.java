@@ -36,51 +36,41 @@ public class ControlActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.v("invoke onClick {}", "AirOnActivity.class");
-                try {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                Request request = new Request
-                                        .Builder()
-                                        .url(url + "1")
-                                        .build();
-                                Log.v("url {}", url + "1");
-                                Response response = client.newCall(request).execute();
-                                String s = response.body().string();
-                                Log.v("onClick {}", s);
-                                JSONObject object = JSONObject.parseObject(s);
-                                if (response.isSuccessful() && object.get("code").equals(0)) {
-                                    handler.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Toast.makeText(ControlActivity.this,
-                                                    "空调打开成功！", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                }
-                            } catch (Exception e) {
-                                Log.v("Exception", e.getMessage());
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Request request = new Request
+                                    .Builder()
+                                    .url(url + "1")
+                                    .build();
+                            Log.v("url {}", url + "1");
+                            Response response = client.newCall(request).execute();
+                            String s = response.body().string();
+                            Log.v("onClick {}", s);
+                            JSONObject object = JSONObject.parseObject(s);
+                            JSONObject meta = object.getJSONObject("meta");
+                            if (response.isSuccessful() && meta.get("code").equals(0)) {
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(ControlActivity.this,
-                                                "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
+                                                "空调打开成功！", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
+                        } catch (Exception e) {
+                            Log.v("Exception", e.getMessage());
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(ControlActivity.this,
+                                            "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
-                    }).start();
-                } catch (Exception e) {
-                    Log.v("Exception", e.getMessage());
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(ControlActivity.this,
-                                    "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+                    }
+                }).start();
             }
         });
 
@@ -88,102 +78,84 @@ public class ControlActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.v("invoke onClick {}", "AirOnActivity.class");
-                try {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                Request request = new Request
-                                        .Builder()
-                                        .url(url + "2")
-                                        .build();
-                                Response response = client.newCall(request).execute();
-                                Log.v("url {}", url + "2");
-                                String s = response.body().string();
-                                Log.v("onClick {}", s);
-                                JSONObject object = JSONObject.parseObject(s);
-                                if (response.isSuccessful() && object.get("code").equals(0)) {
-                                    handler.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Toast.makeText(ControlActivity.this,
-                                                    "空调关闭成功！", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                }
-                            } catch (Exception e) {
-                                Log.v("Exception", e.getMessage());
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Request request = new Request
+                                    .Builder()
+                                    .url(url + "2")
+                                    .build();
+                            Response response = client.newCall(request).execute();
+                            Log.v("url {}", url + "2");
+                            String s = response.body().string();
+                            Log.v("onClick {}", s);
+                            JSONObject object = JSONObject.parseObject(s);
+                            JSONObject meta = object.getJSONObject("meta");
+                            if (response.isSuccessful() && meta.get("code").equals(0)) {
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(ControlActivity.this,
-                                                "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
+                                                "空调关闭成功！", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
+                        } catch (Exception e) {
+                            Log.v("Exception", e.getMessage());
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(ControlActivity.this,
+                                            "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
-                    }).start();
-                } catch (Exception e) {
-                    Log.v("Exception", e.getMessage());
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(ControlActivity.this,
-                                    "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+                    }
+                }).start();
             }
         });
+
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.v("invoke onClick {}", "AirOnActivity.class");
-                try {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                Request request = new Request
-                                        .Builder()
-                                        .url(url + "3")
-                                        .build();
-                                Response response = client.newCall(request).execute();
-                                Log.v("url {}", url + "3");
-                                String s = response.body().string();
-                                Log.v("onClick {}", s);
-                                JSONObject object = JSONObject.parseObject(s);
-                                if (response.isSuccessful() && object.get("code").equals(0)) {
-                                    handler.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Toast.makeText(ControlActivity.this,
-                                                    "灯光打开成功！", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                }
-                            } catch (Exception e) {
-                                Log.v("Exception", e.getMessage());
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Request request = new Request
+                                    .Builder()
+                                    .url(url + "3")
+                                    .build();
+                            Response response = client.newCall(request).execute();
+                            Log.v("url {}", url + "3");
+                            String s = response.body().string();
+                            Log.v("onClick {}", s);
+                            JSONObject object = JSONObject.parseObject(s);
+                            JSONObject meta = object.getJSONObject("meta");
+                            if (response.isSuccessful() && meta.get("code").equals(0)) {
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(ControlActivity.this,
-                                                "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
+                                                "灯光打开成功！", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
+                        } catch (Exception e) {
+                            Log.v("Exception", e.getMessage());
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(ControlActivity.this,
+                                            "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
-                    }).start();
-                } catch (Exception e) {
-                    Log.v("Exception", e.getMessage());
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(ControlActivity.this,
-                                    "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+                    }
+                }).start();
             }
         });
 
@@ -191,51 +163,41 @@ public class ControlActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.v("invoke onClick {}", "AirOnActivity.class");
-                try {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                Request request = new Request
-                                        .Builder()
-                                        .url(url + "4")
-                                        .build();
-                                Response response = client.newCall(request).execute();
-                                Log.v("url {}", url + "4");
-                                String s = response.body().string();
-                                Log.v("onClick {}", s);
-                                JSONObject object = JSONObject.parseObject(s);
-                                if (response.isSuccessful() && object.get("code").equals(0)) {
-                                    handler.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Toast.makeText(ControlActivity.this,
-                                                    "灯光关闭成功！", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                }
-                            } catch (Exception e) {
-                                Log.v("Exception", e.getMessage());
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Request request = new Request
+                                    .Builder()
+                                    .url(url + "4")
+                                    .build();
+                            Response response = client.newCall(request).execute();
+                            Log.v("url {}", url + "4");
+                            String s = response.body().string();
+                            Log.v("onClick {}", s);
+                            JSONObject object = JSONObject.parseObject(s);
+                            JSONObject meta = object.getJSONObject("meta");
+                            if (response.isSuccessful() && meta.get("code").equals(0)) {
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(ControlActivity.this,
-                                                "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
+                                                "灯光关闭成功！", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
+                        } catch (Exception e) {
+                            Log.v("Exception", e.getMessage());
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(ControlActivity.this,
+                                            "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
-                    }).start();
-                } catch (Exception e) {
-                    Log.v("Exception", e.getMessage());
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(ControlActivity.this,
-                                    "网络错误,请检查网络！", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+                    }
+                }).start();
             }
         });
 
