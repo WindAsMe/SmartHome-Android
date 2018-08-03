@@ -29,7 +29,7 @@ public class ControlActivity extends AppCompatActivity {
         final Button btn4 = findViewById(R.id.lightOff);
         final Button btn5 = findViewById(R.id.back);
         final String url = "http://13.67.109.181:8080/man?flag=";
-        final OkHttpClient client = new OkHttpClient();
+        final OkHttpClient client  = new OkHttpClient();
         final Handler handler = new Handler(Looper.getMainLooper());
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -42,9 +42,9 @@ public class ControlActivity extends AppCompatActivity {
                         try {
                             Request request = new Request
                                     .Builder()
-                                    .url(url + "1")
+                                    .url(url + "1&isWorked=0 ")
                                     .build();
-                            Log.v("url {}", url + "1");
+                            Log.v("url {}", url + "1&isWorked=0");
                             Response response = client.newCall(request).execute();
                             String s = response.body().string();
                             Log.v("onClick {}", s);
@@ -85,10 +85,10 @@ public class ControlActivity extends AppCompatActivity {
                         try {
                             Request request = new Request
                                     .Builder()
-                                    .url(url + "2")
+                                    .url(url + "2&isWorked=0")
                                     .build();
                             Response response = client.newCall(request).execute();
-                            Log.v("url {}", url + "2");
+                            Log.v("url {}", url + "2&isWorked=0");
                             String s = response.body().string();
                             Log.v("onClick {}", s);
                             JSONObject object = JSONObject.parseObject(s);
@@ -127,10 +127,10 @@ public class ControlActivity extends AppCompatActivity {
                         try {
                             Request request = new Request
                                     .Builder()
-                                    .url(url + "3")
+                                    .url(url  + "3&isWorked=0" )
                                     .build();
                             Response response = client.newCall(request).execute();
-                            Log.v("url {}", url + "3");
+                            Log.v("url {}", url  + "3&isWorked=0");
                             String s = response.body().string();
                             Log.v("onClick {}", s);
                             JSONObject object = JSONObject.parseObject(s);
@@ -169,10 +169,10 @@ public class ControlActivity extends AppCompatActivity {
                         try {
                             Request request = new Request
                                     .Builder()
-                                    .url(url + "4")
+                                    .url(url  + "4&isWorked=0")
                                     .build();
                             Response response = client.newCall(request).execute();
-                            Log.v("url {}", url + "4");
+                            Log.v("url {}", url  + "4&isWorked=0");
                             String s = response.body().string();
                             Log.v("onClick {}", s);
                             JSONObject object = JSONObject.parseObject(s);

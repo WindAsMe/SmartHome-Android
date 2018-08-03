@@ -4,12 +4,14 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activity.TempActivity">
+
     <TextView
         android:id="@+id/temp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_x="17dp"
+        android:layout_y="149dp"
         android:gravity="center_horizontal"
-        android:layout_y="150dp"
         android:textSize="25dp"
         android:textStyle="bold" />
 
@@ -17,15 +19,15 @@
         android:id="@+id/go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="130dp"
-        android:layout_y="300dp"
+        android:layout_x="74dp"
+        android:layout_y="357dp"
         android:text="刷新" />
 
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="130dp"
-        android:layout_y="400dp"
+        android:layout_x="204dp"
+        android:layout_y="362dp"
         android:text="返回" />
 </AbsoluteLayout>

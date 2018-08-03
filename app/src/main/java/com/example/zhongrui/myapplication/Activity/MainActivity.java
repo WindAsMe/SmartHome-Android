@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                                     String s = response.body().string();
                                     JSONObject object = JSONObject.parseObject(s);
                                     JSONObject meta = object.getJSONObject("meta");
+                                    Log.v("meta {} ", meta.toString());
                                     if (meta.get("code").equals(0)) {
                                         Handler handler = new Handler(Looper.getMainLooper());
                                         handler.post(new Runnable() {
